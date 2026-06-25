@@ -1,0 +1,470 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Prompt:wght@200;300;400;500&display=swap');
+
+:root {
+  --maroon: #61100D;
+  --beige: #EAD196;
+  --main-white: #FBF8F1;
+  --main-yellow: #F6F1D5;
+  --shadow-black: #1A1A1A;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--main-white);
+  color: var(--shadow-black);
+  font-family: 'Prompt', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealRight {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal-right {
+  animation: revealRight 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+
+/* Navbar - Stand out & Clear Logo */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 85px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  z-index: 100;
+  background: rgba(251, 248, 241, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+}
+
+.md-hidden { 
+  display: block; 
+  cursor: pointer; 
+  color: var(--maroon);
+}
+
+.nav-links { display: none; }
+
+/* ทำให้โลโก้ใหญ่และชัดเจน */
+.logo img {
+  height: 55px;
+  width: auto;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(97, 16, 13, 0.15));
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Editorial Hero Section - Mobile First */
+.editorial-hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  padding-top: 85px; /* ดันเนื้อหาลงมาไม่ให้เมนูทับ */
+  background-color: var(--maroon);
+}
+
+.hero-visual {
+  height: 50vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoomOut 10s ease infinite alternate;
+}
+
+@keyframes zoomOut {
+  from { transform: scale(1.05); }
+  to { transform: scale(1); }
+}
+
+.hero-content {
+  flex: 1;
+  background-color: var(--maroon);
+  color: var(--beige);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.hero-kicker {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  opacity: 0;
+}
+
+.hero-title span {
+  font-style: italic;
+  color: var(--main-white);
+}
+
+.btn-editorial {
+  width: 100%;
+  text-align: center;
+  padding: 1.2rem;
+  font-family: 'Prompt', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--maroon);
+  background: var(--beige);
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+/* The Art of Gifting - Mobile First */
+.editorial-section {
+  padding: 5rem 1.5rem;
+  background-color: var(--main-white);
+}
+
+.editorial-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.editorial-header h2 {
+  font-size: 2.5rem;
+  color: var(--maroon);
+  font-weight: 400;
+}
+
+.editorial-header p {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 1rem;
+  font-weight: 300;
+}
+
+.asymmetric-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.story-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.story-image {
+  width: 100%;
+  position: relative;
+}
+
+.story-image img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.story-content {
+  padding: 0 1rem;
+  position: relative;
+}
+
+.story-number {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  color: var(--beige);
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.story-title {
+  font-size: 2rem;
+  color: var(--maroon);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.story-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+/* Best Sellers Gallery - Mobile First */
+.gallery-section {
+  padding: 5rem 0;
+  background-color: var(--main-yellow);
+}
+
+.gallery-header {
+  padding: 0 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.gallery-header h2 {
+  font-size: 2.5rem;
+  color: var(--maroon);
+}
+
+.gallery-carousel {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0 1.5rem 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.gallery-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-item {
+  min-width: 80vw;
+  scroll-snap-align: center;
+  cursor: pointer;
+}
+
+.gallery-img-wrapper {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.gallery-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.gallery-title {
+  font-size: 1.2rem;
+  color: var(--maroon);
+  font-family: 'Playfair Display', serif;
+}
+
+.gallery-price {
+  font-size: 1rem;
+  color: #888;
+  font-weight: 300;
+}
+
+/* Floating LINE Button - Mobile Base */
+.floating-line-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  background-color: #00B900;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 185, 0, 0.3);
+  z-index: 999;
+  animation: pulse-glow 2.5s infinite;
+}
+
+.floating-line-btn img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(0, 185, 0, 0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(0, 185, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 185, 0, 0); }
+}
+
+/* ------------------------------------------- */
+/* Desktop / Tablet Enhancements (min-width) */
+/* ------------------------------------------- */
+@media (min-width: 768px) {
+  .navbar {
+    height: 100px;
+    padding: 0 4rem;
+  }
+  .md-hidden { display: none; }
+  .nav-links {
+    display: flex;
+    gap: 3.5rem;
+  }
+  .nav-links a {
+    color: var(--maroon); /* สีเด่นชัดบนเมนูกระจก */
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+  }
+  .nav-links a:hover { opacity: 0.6; }
+  
+  /* โลโก้ใหญ่ขึ้นเมื่ออยู่บน Desktop */
+  .logo img { height: 70px; }
+
+  /* Desktop Hero Split Screen */
+  .editorial-hero {
+    flex-direction: row-reverse;
+    padding-top: 0; /* กลับไปใช้รูปแบบเดิมบนจอใหญ่ */
+  }
+  .hero-visual {
+    height: 100vh;
+    flex: 1;
+  }
+  .hero-content {
+    height: 100vh;
+    flex: 1;
+    padding: 4rem 8%;
+  }
+  .hero-title { font-size: 4.5rem; }
+  .btn-editorial { 
+    width: auto; 
+    padding: 1rem 3rem; 
+  }
+  .btn-editorial:hover {
+    background: var(--main-white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+
+  /* Desktop Art of Gifting */
+  .editorial-section { padding: 10rem 4rem; }
+  .editorial-header { margin-bottom: 8rem; }
+  .editorial-header h2 { font-size: 3.5rem; }
+  .editorial-header p { font-size: 1.2rem; }
+  
+  .asymmetric-grid { gap: 8rem; max-width: 1200px; }
+  .story-block {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+  .story-block.reverse { flex-direction: row-reverse; }
+  
+  .story-image { flex: 1.2; }
+  .story-image img { 
+    height: 600px; 
+    transition: transform 0.6s ease;
+  }
+  .story-image:hover img { transform: scale(1.03); }
+  
+  .story-content { flex: 1; padding: 2rem; }
+  .story-number {
+    top: -80px;
+    left: -20px;
+    font-size: 12rem;
+  }
+  .story-block.reverse .story-number {
+    left: auto;
+    right: -20px;
+  }
+  .story-title { font-size: 2.5rem; }
+  .story-desc { font-size: 1.1rem; }
+
+  /* Desktop Gallery */
+  .gallery-section { padding: 8rem 0; }
+  .gallery-header { padding: 0 4rem; margin-bottom: 4rem; }
+  .gallery-header h2 { font-size: 3.5rem; }
+  
+  .gallery-carousel {
+    padding: 0 4rem 4rem;
+    gap: 3rem;
+  }
+  .gallery-item { min-width: 400px; scroll-snap-align: start; }
+  .gallery-img-wrapper { height: 550px; }
+  .gallery-item:hover .gallery-img-wrapper img { transform: scale(1.05); }
+  .gallery-title { font-size: 1.4rem; }
+  .gallery-price { font-size: 1.2rem; }
+
+  /* Desktop LINE Button */
+  .floating-line-btn {
+    bottom: 40px;
+    right: 40px;
+    width: 65px;
+    height: 65px;
+  }
+  .floating-line-btn img { width: 38px; height: 38px; }
+  .floating-line-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 185, 0, 0.4);
+    animation: none;
+  }
+}
